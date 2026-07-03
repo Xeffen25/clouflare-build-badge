@@ -4,7 +4,7 @@
  */
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "eminence-astro-starter",
+  "name": "cloudflare-build-badge",
   "main": "@astrojs/cloudflare/entrypoints/server",
   "compatibility_date": "2026-03-17",
   "compatibility_flags": ["global_fetch_strictly_public", "nodejs_compat"],
@@ -16,7 +16,7 @@
     "enabled": true,
   },
   "route": {
-    "pattern": "eminence-astro-starter.xeffen25.com",
+    "pattern": "cloudflare-build-badge.xeffen25.com",
     "custom_domain": true,
   },
   "workers_dev": false,
