@@ -204,6 +204,10 @@ function getStatusMessage(
   }
 }
 
+function isExpectedHttpError(httpStatus?: number): boolean {
+  return httpStatus !== undefined && httpStatus >= 400 && httpStatus < 500;
+}
+
 function getErrorMessage(httpStatus?: number): string {
   switch (httpStatus) {
     case 404:
@@ -467,16 +471,18 @@ export async function getBadgeResponse(params: {
         ? (error as { status: number }).status
         : undefined;
 
-    const errorMessage =
-      error instanceof Error ? error.message : "unknown error";
+    if (!isExpectedHttpError(httpStatus)) {
+      const errorMessage =
+        error instanceof Error ? error.message : "unknown error";
 
-    console.error("[badge] GitHub/checks flow failed", {
-      username,
-      repository,
-      branch: ref ?? branch ?? null,
-      httpStatus: httpStatus ?? null,
-      errorMessage,
-    });
+      console.error("[badge] GitHub/checks flow failed", {
+        username,
+        repository,
+        branch: ref ?? branch ?? null,
+        httpStatus: httpStatus ?? null,
+        errorMessage,
+      });
+    }
 
     return errorBadge(
       getErrorMessage(httpStatus),
