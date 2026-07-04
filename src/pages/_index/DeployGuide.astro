@@ -20,7 +20,7 @@ const deployCommitCommand2 = m.deploy_step6_command_2();
         <CardStepTitle align="left">{m.deploy_step1_label()}</CardStepTitle>
         <p class="text-base-content/70 text-sm">{m.deploy_step1_text()}</p>
         <CopyableCode
-          client:load
+          client:visible
           text={deployStep1Command}
           label={m.common_copy_command()}
           copiedLabel={m.common_copied()}
@@ -71,7 +71,7 @@ const deployCommitCommand2 = m.deploy_step6_command_2();
           {m.deploy_step5_link_label()}
         </a>
         <CopyableCode
-          client:load
+          client:visible
           text={deploySecretCommand}
           label={m.common_copy_command()}
           copiedLabel={m.common_copied()}
@@ -84,13 +84,13 @@ const deployCommitCommand2 = m.deploy_step6_command_2();
         <CardStepTitle align="left">{m.deploy_step6_label()}</CardStepTitle>
         <p class="text-base-content/70 text-sm">{m.deploy_step6_text()}</p>
         <CopyableCode
-          client:load
+          client:visible
           text={deployCommitCommand1}
           label={m.common_copy_command()}
           copiedLabel={m.common_copied()}
         />
         <CopyableCode
-          client:load
+          client:visible
           text={deployCommitCommand2}
           label={m.common_copy_command()}
           copiedLabel={m.common_copied()}
