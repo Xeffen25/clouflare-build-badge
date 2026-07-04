@@ -14,9 +14,6 @@ export default defineConfig({
   adapter: cloudflare(),
   output: "server",
   compressHTML: true, // Fixes spacing issues from Astro v7.
-  security: {
-    csp: true,
-  },
   fonts: [
     {
       provider: fontProviders.google(),
