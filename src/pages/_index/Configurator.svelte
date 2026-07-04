@@ -1,6 +1,6 @@
 <script lang="ts">
   import { m } from "@/paraglide/messages";
-  import CopyButton from "./CopyButton.svelte";
+  import CopyButton from "@/components/CopyButton.svelte";
 
   let repoUrl = $state("");
   let username = $state("");
