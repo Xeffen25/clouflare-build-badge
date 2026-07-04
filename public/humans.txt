@@ -1,0 +1,13 @@
+/* TEAM */
+    Chef / Developer: xeffen25
+    Contact: xeffen25@xeffen25.com
+    Site: https://xeffen25.com
+
+/* SITE */
+    Last update: 2026/07/04
+    Languages: es, en
+    Standards: HTML5, CSS3
+    Hosting: Cloudflare Workers
+    Stack: Astro, Svelte, Tailwind CSS, daisyUI
+    i18n: Paraglide JS (URL strategy, base locale without prefix)
+    SEO: Eminence Astro Suite (Open Graph, JSON-LD, sitemap, robots.txt, security.txt)

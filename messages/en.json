@@ -1,7 +1,8 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "index_title": "Cloudflare Build Badge — Status badges for Cloudflare Workers Builds",
-  "index_description": "Generate live SVG badges that show the build status of your Cloudflare Workers Builds, powered by the GitHub Checks API.",
+  "index_title": "Cloudflare Build Badge - Live Status Badges for Pages & Workers",
+  "index_description": "Generate live build status badges for your Cloudflare Pages and Workers projects. Display your continuous deployment success seamlessly inside GitHub READMEs or websites.",
+  "seo_og_image_alt": "Cloudflare Build Badge — live build status badges for Pages and Workers",
   "layout_skip_to_content": "Skip to main content",
 
   "header_logo": "Cloudflare Build Badge",

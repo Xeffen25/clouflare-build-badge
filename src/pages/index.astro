@@ -1,14 +1,79 @@
 ---
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
 import { m } from "@/paraglide/messages";
+import {
+  deLocalizeHref,
+  getLocale,
+  locales,
+  localizeHref,
+} from "@/paraglide/runtime";
+import type { Graph, Person, WebSite } from "schema-dts";
 import Configurator from "@/pages/_index/Configurator.svelte";
 import Examples from "@/pages/_index/Examples.astro";
 import About from "@/pages/_index/About.astro";
 import HowItWorks from "@/pages/_index/HowItWorks.astro";
 import DeployGuide from "@/pages/_index/DeployGuide.astro";
+
+const site = Astro.site!;
+const locale = getLocale();
+const ogLocale = locale === "en" ? "en_US" : "es_ES";
+const ogLocaleAlternate = locale === "en" ? ["es_ES"] : ["en_US"];
+const ogImageUrl = new URL("/opengraph.png", site).href;
+const basePath = deLocalizeHref(Astro.url.pathname);
+const languageAlternates = Object.fromEntries(
+  locales.map((l) => [
+    l,
+    new URL(localizeHref(basePath, { locale: l }), site).href,
+  ]),
+) as Record<string, string>;
+languageAlternates["x-default"] = languageAlternates.es;
+
+const authorId = `${site.href}#author`;
+const websiteId = `${site.href}#website`;
+
+const website: WebSite = {
+  "@type": "WebSite",
+  "@id": websiteId,
+  url: site.href,
+  name: "Cloudflare Build Badge",
+  description: m.index_description(),
+  inLanguage: ["es", "en"],
+  publisher: { "@id": authorId },
+};
+
+const author: Person = {
+  "@type": "Person",
+  "@id": authorId,
+  name: "xeffen25",
+  sameAs: "https://github.com/Xeffen25/cloudflare-build-badge",
+};
+
+const jsonLd: Graph = {
+  "@context": "https://schema.org",
+  "@graph": [website, author],
+};
 ---
 
-<DefaultLayout title={m.index_title()} description={m.index_description()}>
+<DefaultLayout
+  title={m.index_title()}
+  description={m.index_description()}
+  robots={{ content: "index, follow" }}
+  openGraph={{
+    title: m.index_title(),
+    description: m.index_description(),
+    siteName: "Cloudflare Build Badge",
+    locale: ogLocale,
+    localeAlternate: ogLocaleAlternate,
+    image: {
+      src: ogImageUrl,
+      width: 1200,
+      height: 630,
+      alt: m.seo_og_image_alt(),
+    },
+  }}
+  jsonLd={jsonLd as unknown as Record<string, unknown>}
+  languageAlternates={languageAlternates}
+>
   <Configurator client:load />
   <Examples />
   <About />

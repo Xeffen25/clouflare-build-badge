@@ -26,8 +26,32 @@ export default defineConfig({
 
   integrations: [
     eminencesuite({
+      headTags: {
+        openGraphSiteName: "Cloudflare Build Badge",
+        colorScheme: "dark",
+        themeColor: "#f38020",
+        humansTxt: true,
+      },
       icons: {
         source: "src/assets/icon.svg",
+      },
+      manifest: false,
+      robotsTxt: {
+        rules: [{ agent: "*", allow: "/" }],
+        sitemap: "/sitemap-index.xml",
+      },
+      securityTxt: {
+        contact: "mailto:xeffen25@xeffen25.com",
+        expires: "1 year",
+        preferredLanguages: ["es", "en"],
+        canonical:
+          "https://cloudflare-build-badge.xeffen25.com/.well-known/security.txt",
+      },
+      sitemap: {
+        i18n: {
+          defaultLocale: "es",
+          locales: { es: "es", en: "en" },
+        },
       },
     }),
     svelte(),
