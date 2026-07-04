@@ -1,0 +1,77 @@
+---
+import { m } from "@/paraglide/messages";
+import CopyButton from "@/components/CopyButton.svelte";
+
+const REPO_OWNER = "Xeffen25";
+const REPO_NAME = "cloudflare-build-badge";
+
+const badgeBaseUrl = new URL(
+  `${REPO_OWNER}/${REPO_NAME}/status.svg`,
+  Astro.site,
+);
+
+function badgeUrlWithStyle(style?: string): string {
+  const url = new URL(badgeBaseUrl);
+  if (style) url.searchParams.set("style", style);
+  return url.toString();
+}
+
+const examples = [
+  { label: m.examples_style_default(), url: badgeUrlWithStyle() },
+  {
+    label: m.examples_style_flat_square(),
+    url: badgeUrlWithStyle("flat-square"),
+  },
+  { label: m.examples_style_social(), url: badgeUrlWithStyle("social") },
+];
+---
+
+<section id="examples" class="page-container py-12 sm:py-20">
+  <h2 class="text-accent text-2xl font-bold sm:text-3xl">
+    {m.examples_title()}
+  </h2>
+  <p class="text-base-content/70 mt-2 max-w-2xl">
+    {m.examples_description()}
+  </p>
+
+  <ul
+    class="mt-8 flex flex-col items-center gap-4 sm:grid sm:grid-cols-3 sm:items-start"
+  >
+    {
+      examples.map((example) => {
+        const markdown = `[![${m.header_logo()}](${example.url})](${example.url})`;
+        const alt = `${m.header_logo()} — ${example.label}`;
+
+        return (
+          <li class="card bg-base-200 w-fit shadow-sm sm:w-auto">
+            <div class="card-body items-center gap-3 p-5 text-center">
+              <span class="text-accent text-sm font-semibold tracking-wide uppercase sm:text-base">
+                {example.label}
+              </span>
+              <a
+                href={example.url}
+                target="_blank"
+                rel="noopener"
+                aria-label={m.examples_view_badge()}
+              >
+                <img
+                  src={example.url}
+                  alt={alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              <CopyButton
+                client:load
+                variant="labeled"
+                text={markdown}
+                label={m.common_copy_markdown()}
+                copiedLabel={m.common_copied()}
+              />
+            </div>
+          </li>
+        );
+      })
+    }
+  </ul>
+</section>

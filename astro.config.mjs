@@ -13,7 +13,7 @@ export default defineConfig({
   site: "https://cloudflare-build-badge.xeffen25.com",
   adapter: cloudflare(),
   output: "server",
-
+  compressHTML: true, // Fixes spacing issues from Astro v7
   fonts: [
     {
       provider: fontProviders.google(),

@@ -1,0 +1,129 @@
+---
+import { m } from "@/paraglide/messages";
+import CopyButton from "@/components/CopyButton.svelte";
+
+const deployStep1Command = m.deploy_step1_command();
+const deploySecretCommand = m.deploy_step5_command();
+const deployCommitCommand1 = m.deploy_step6_command_1();
+const deployCommitCommand2 = m.deploy_step6_command_2();
+---
+
+<section id="deploy" class="page-container py-12 sm:py-20">
+  <h2 class="text-accent text-2xl font-bold sm:text-3xl">
+    {m.deploy_title()}
+  </h2>
+  <p class="text-base-content/70 mt-2 max-w-2xl">{m.deploy_description()}</p>
+
+  <ol class="mt-8 flex flex-col gap-4">
+    <li class="card bg-base-200 shadow-sm">
+      <div class="card-body">
+        <h3 class="card-title text-lg">{m.deploy_step1_label()}</h3>
+        <p class="text-base-content/70 text-sm">{m.deploy_step1_text()}</p>
+        <div class="flex w-full items-stretch gap-2">
+          <code
+            class="bg-base-300 flex-1 overflow-x-auto rounded-field px-4 py-3 font-mono text-xs sm:text-sm"
+          >
+            {deployStep1Command}
+          </code>
+          <CopyButton
+            client:load
+            text={deployStep1Command}
+            label={m.common_copy_command()}
+            copiedLabel={m.common_copied()}
+          />
+        </div>
+      </div>
+    </li>
+
+    <li class="card bg-base-200 shadow-sm">
+      <div class="card-body">
+        <h3 class="card-title text-lg">{m.deploy_step2_label()}</h3>
+        <p class="text-base-content/70 text-sm">{m.deploy_step2_text()}</p>
+        <a
+          href="https://dash.cloudflare.com/"
+          target="_blank"
+          rel="noopener"
+          class="link link-primary text-sm"
+        >
+          {m.deploy_step2_link_label()}
+        </a>
+      </div>
+    </li>
+
+    <li class="card bg-base-200 shadow-sm">
+      <div class="card-body">
+        <h3 class="card-title text-lg">{m.deploy_step3_label()}</h3>
+        <p class="text-base-content/70 text-sm">{m.deploy_step3_text()}</p>
+      </div>
+    </li>
+
+    <li class="card bg-base-200 shadow-sm">
+      <div class="card-body">
+        <h3 class="card-title text-lg">{m.deploy_step4_label()}</h3>
+        <p class="text-base-content/70 text-sm">{m.deploy_step4_text_a()}</p>
+        <p class="text-base-content/70 text-sm">{m.deploy_step4_text_b()}</p>
+      </div>
+    </li>
+
+    <li class="card bg-base-200 shadow-sm">
+      <div class="card-body">
+        <h3 class="card-title text-lg">{m.deploy_step5_label()}</h3>
+        <p class="text-base-content/70 text-sm">{m.deploy_step5_text()}</p>
+        <a
+          href="https://github.com/settings/tokens/new"
+          target="_blank"
+          rel="noopener"
+          class="link link-primary text-sm"
+        >
+          {m.deploy_step5_link_label()}
+        </a>
+        <div class="flex w-full items-stretch gap-2">
+          <code
+            class="bg-base-300 flex-1 overflow-x-auto rounded-field px-4 py-3 font-mono text-xs sm:text-sm"
+          >
+            {deploySecretCommand}
+          </code>
+          <CopyButton
+            client:load
+            text={deploySecretCommand}
+            label={m.common_copy_command()}
+            copiedLabel={m.common_copied()}
+          />
+        </div>
+      </div>
+    </li>
+
+    <li class="card bg-base-200 shadow-sm">
+      <div class="card-body">
+        <h3 class="card-title text-lg">{m.deploy_step6_label()}</h3>
+        <p class="text-base-content/70 text-sm">{m.deploy_step6_text()}</p>
+        <div class="flex w-full items-stretch gap-2">
+          <code
+            class="bg-base-300 flex-1 overflow-x-auto rounded-field px-4 py-3 font-mono text-xs sm:text-sm"
+          >
+            {deployCommitCommand1}
+          </code>
+          <CopyButton
+            client:load
+            text={deployCommitCommand1}
+            label={m.common_copy_command()}
+            copiedLabel={m.common_copied()}
+          />
+        </div>
+        <div class="flex w-full items-stretch gap-2">
+          <code
+            class="bg-base-300 flex-1 overflow-x-auto rounded-field px-4 py-3 font-mono text-xs sm:text-sm"
+          >
+            {deployCommitCommand2}
+          </code>
+          <CopyButton
+            client:load
+            text={deployCommitCommand2}
+            label={m.common_copy_command()}
+            copiedLabel={m.common_copied()}
+          />
+        </div>
+      </div>
+    </li>
+  </ol>
+</section>

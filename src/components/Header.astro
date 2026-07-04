@@ -1,7 +1,40 @@
 ---
 import LanguageSwitcher from "@/components/LanguageSwitcher.astro";
+import { m } from "@/paraglide/messages";
+import { localizeHref } from "@/paraglide/runtime";
+import githubIconSvg from "@/assets/icons/github.svg?raw";
+
+const REPO_URL = "https://github.com/Xeffen25/cloudflare-build-badge";
 ---
 
-<header id="header">
-  <LanguageSwitcher />
+<header
+  id="header"
+  class="border-base-300/60 bg-base-100/80 sticky top-0 z-40 border-b backdrop-blur"
+>
+  <div class="page-container flex items-center justify-between gap-4 py-4">
+    <a
+      href={localizeHref("/")}
+      class="text-primary text-xl font-bold tracking-tight sm:text-2xl"
+    >
+      {m.header_logo()}
+    </a>
+
+    <div class="flex items-center gap-2">
+      <LanguageSwitcher />
+
+      <a
+        href={REPO_URL}
+        target="_blank"
+        rel="noopener"
+        class="btn btn-ghost btn-square"
+        aria-label={m.header_github_link()}
+        title={m.header_github_link()}
+      >
+        <span
+          class="block size-7 [&>svg]:h-full [&>svg]:w-full [&>svg]:fill-current"
+          set:html={githubIconSvg}
+        />
+      </a>
+    </div>
+  </div>
 </header>

@@ -50,19 +50,19 @@ const anchorName = `--language-switcher-${uid}`;
   <button
     type="button"
     popovertarget={menuId}
-    class="btn btn-ghost btn-sm gap-2"
+    class="btn btn-ghost gap-2"
     aria-label={`Language: ${currentLanguage.label}`}
     style={`anchor-name: ${anchorName};`}
   >
     <span
-      class="inline-flex h-4 w-6 overflow-hidden rounded-sm"
+      class="inline-flex h-5 w-7 overflow-hidden rounded-sm"
       aria-hidden="true"
       set:html={currentLanguage.flag}
     />
     <span lang={currentLanguage.locale}>{currentLanguage.label}</span>
 
     <svg
-      class="size-4 transition-transform duration-200 group-has-[ul:popover-open]:rotate-180"
+      class="size-5 transition-transform duration-200 group-has-[ul:popover-open]:rotate-180"
       viewBox="0 0 20 20"
       fill="none"
       aria-hidden="true"
@@ -94,7 +94,7 @@ const anchorName = `--language-switcher-${uid}`;
           >
             <span class="flex items-center gap-2">
               <span
-                class="inline-flex h-4 w-6 overflow-hidden rounded-sm"
+                class="inline-flex h-5 w-7 overflow-hidden rounded-sm"
                 aria-hidden="true"
                 set:html={language.flag}
               />

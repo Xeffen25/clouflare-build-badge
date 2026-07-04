@@ -1,1 +1,17 @@
-<footer id="footer"></footer>
+---
+import { m } from "@/paraglide/messages";
+---
+
+<footer id="footer" class="border-base-300/60 border-t">
+  <p class="text-base-content/60 page-container py-8 text-center text-sm">
+    {m.footer_made_by()}
+    <a
+      href="https://github.com/Xeffen25"
+      target="_blank"
+      rel="noopener"
+      class="link link-primary"
+    >
+      {m.footer_made_by_name()}
+    </a>
+  </p>
+</footer>

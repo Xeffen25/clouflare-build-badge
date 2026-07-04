@@ -1,0 +1,84 @@
+---
+import { m } from "@/paraglide/messages";
+
+const steps = [
+  {
+    label: m.how_it_works_step1_label(),
+    title: m.how_it_works_step1_title(),
+    service: m.how_it_works_step1_service(),
+    text: m.how_it_works_step1_text(),
+  },
+  {
+    label: m.how_it_works_step2_label(),
+    title: m.how_it_works_step2_title(),
+    service: m.how_it_works_step2_service(),
+    text: m.how_it_works_step2_text(),
+  },
+  {
+    label: m.how_it_works_step3_label(),
+    title: m.how_it_works_step3_title(),
+    service: m.how_it_works_step3_service(),
+    text: m.how_it_works_step3_text(),
+  },
+  {
+    label: m.how_it_works_step4_label(),
+    title: m.how_it_works_step4_title(),
+    service: m.how_it_works_step4_service(),
+    text: m.how_it_works_step4_text(),
+  },
+];
+---
+
+<section id="how-it-works" class="page-container py-12 sm:py-20">
+  <h2 class="text-accent text-2xl font-bold sm:text-3xl">
+    {m.how_it_works_title()}
+  </h2>
+  <p class="text-base-content/70 mt-2 max-w-2xl">
+    {m.how_it_works_description()}
+  </p>
+
+  <div
+    class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-stretch lg:gap-3"
+    role="img"
+    aria-label={m.how_it_works_description()}
+  >
+    {
+      steps.map((step, index) => (
+        <>
+          <div class="card bg-base-200 shadow-sm">
+            <div class="card-body">
+              <span class="text-primary text-sm font-semibold tracking-wide uppercase">
+                {step.label}
+              </span>
+              <h3 class="card-title text-lg">{step.title}</h3>
+              <span class="badge badge-accent badge-outline h-auto w-fit max-w-full py-1.5 leading-snug whitespace-normal">
+                {step.service}
+              </span>
+              <p class="text-base-content/70 mt-2 text-sm">{step.text}</p>
+            </div>
+          </div>
+          {index < steps.length - 1 && (
+            <div
+              class="hidden items-center justify-center lg:flex"
+              aria-hidden="true"
+            >
+              <svg
+                class="text-base-content/30 size-6"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M5 12h14M13 6l6 6-6 6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          )}
+        </>
+      ))
+    }
+  </div>
+</section>
