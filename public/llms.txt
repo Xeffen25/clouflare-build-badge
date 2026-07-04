@@ -1,0 +1,54 @@
+# Cloudflare Build Badge
+
+> Cloudflare Build Badge is a Cloudflare Worker that generates SVG build-status badges for any GitHub repository deployed with Cloudflare Workers Builds. It queries the GitHub Checks API for the latest Cloudflare Workers & Pages check, maps the result to a Shields.io badge, and returns an embeddable SVG — no setup required in the target repository.
+
+Cloudflare Build Badge fills the gap left by GitHub: there is no native status badge for Cloudflare Workers & Pages checks (unlike GitHub Actions). Badge status color and message are computed automatically from the latest build; appearance is customizable via Shields.io query parameters.
+
+Badge URL pattern:
+
+- `/{username}/{repository}/status.svg` — uses the repository default branch
+- `/{username}/{repository}/{branch}/status.svg` — targets a specific branch
+
+Supported query parameters: `style`, `logo`, `logoColor`, `logoSize`, `label`, `labelColor`, `color`, `cacheSeconds`. Any Shields.io query parameter is supported.
+
+## Core
+
+- [Homepage](https://cloudflare-build-badge.xeffen25.com/): Badge configurator, live examples, architecture overview, and deploy guide
+- [English homepage](https://cloudflare-build-badge.xeffen25.com/en/): Same content in English (`/en/` prefix)
+- [Example badge (default)](https://cloudflare-build-badge.xeffen25.com/Xeffen25/cloudflare-build-badge/status.svg): Live SVG badge for this project
+- [Example badge (flat-square)](https://cloudflare-build-badge.xeffen25.com/Xeffen25/cloudflare-build-badge/status.svg?style=flat-square): Same badge with `style=flat-square`
+- [Example badge (social)](https://cloudflare-build-badge.xeffen25.com/Xeffen25/cloudflare-build-badge/status.svg?style=social): Same badge with `style=social`
+
+## How it works
+
+1. A badge URL is requested from the Cloudflare Worker.
+2. The Worker calls the GitHub Checks API for the latest `cloudflare-workers-and-pages` check on the requested branch.
+3. The check status is mapped to a Shields.io badge (message and color) and fetched as SVG.
+4. The SVG is returned with HTTP caching; it refreshes on the next request after the cache expires.
+
+Status messages include: `passing`, `failing`, `building`, `queued`, `waiting`, `pending`, `action required`, `timed out`, `neutral`, `cancelled`, `skipped`, `stale`, `unknown`. Error states include: `not deployed`, `repo not found`, `unauthorized`, `forbidden`, `rate limited`, and others.
+
+## Deploy your own
+
+- [GitHub repository](https://github.com/Xeffen25/cloudflare-build-badge): Source code and Astro template
+- [Cloudflare dashboard](https://dash.cloudflare.com/): Connect the repo to Workers Builds
+- [Create a classic GitHub token](https://github.com/settings/tokens/new): Read-only `repo` scope, stored as `GITHUB_TOKEN` via `pnpm wrangler secret put GITHUB_TOKEN`
+
+Template command:
+
+```
+pnpm create astro@latest cloudflare-build-badge --template Xeffen25/cloudflare-build-badge --install --git
+```
+
+After copying the template: set `site` in `astro.config.mjs`, update the worker name in `wrangler.jsonc`, configure routing (custom domain or `workers.dev`), add the GitHub token secret, then commit and deploy.
+
+## Optional
+
+- [Sitemap](https://cloudflare-build-badge.xeffen25.com/sitemap-index.xml): All indexable pages
+- [robots.txt](https://cloudflare-build-badge.xeffen25.com/robots.txt): Crawler rules
+- [security.txt](https://cloudflare-build-badge.xeffen25.com/.well-known/security.txt): Security contact
+- [humans.txt](https://cloudflare-build-badge.xeffen25.com/humans.txt): Team and stack metadata
+- [Shields.io documentation](https://shields.io/): Badge styling reference
+- [simple-icons](https://simple-icons.org/): Logo slug reference for the `logo` parameter
+- [GitHub Checks API](https://docs.github.com/en/rest/checks/runs): Underlying status source
+- [Cloudflare Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/): Deployment platform this badge monitors
