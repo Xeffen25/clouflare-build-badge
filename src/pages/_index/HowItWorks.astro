@@ -1,5 +1,7 @@
 ---
 import { m } from "@/paraglide/messages";
+import CardStepTitle from "@/components/CardStepTitle.svelte";
+import SectionHeading from "@/components/SectionHeading.svelte";
 
 const steps = [
   {
@@ -30,10 +32,8 @@ const steps = [
 ---
 
 <section id="how-it-works" class="page-container py-12 sm:py-20">
-  <h2 class="text-accent text-2xl font-bold sm:text-3xl">
-    {m.how_it_works_title()}
-  </h2>
-  <p class="text-base-content/70 mt-2 max-w-2xl">
+  <SectionHeading>{m.how_it_works_title()}</SectionHeading>
+  <p class="text-base-content/70 mx-auto mt-2 max-w-2xl lg:mx-0">
     {m.how_it_works_description()}
   </p>
 
@@ -46,15 +46,17 @@ const steps = [
       steps.map((step, index) => (
         <>
           <div class="card bg-base-200 shadow-sm">
-            <div class="card-body">
+            <div class="card-body items-center lg:items-start">
               <span class="text-primary text-sm font-semibold tracking-wide uppercase">
                 {step.label}
               </span>
-              <h3 class="card-title text-lg">{step.title}</h3>
-              <span class="badge badge-accent badge-outline h-auto w-fit max-w-full py-1.5 leading-snug whitespace-normal">
+              <CardStepTitle>{step.title}</CardStepTitle>
+              <span class="badge badge-accent badge-outline mx-auto h-auto w-fit max-w-full py-1.5 leading-snug whitespace-normal lg:mx-0">
                 {step.service}
               </span>
-              <p class="text-base-content/70 mt-2 text-sm">{step.text}</p>
+              <p class="text-base-content/70 mt-2 w-full text-left text-sm">
+                {step.text}
+              </p>
             </div>
           </div>
           {index < steps.length - 1 && (

@@ -1,6 +1,7 @@
 ---
 import { m } from "@/paraglide/messages";
 import CopyButton from "@/components/CopyButton.svelte";
+import SectionHeading from "@/components/SectionHeading.svelte";
 
 const REPO_OWNER = "Xeffen25";
 const REPO_NAME = "cloudflare-build-badge";
@@ -27,9 +28,7 @@ const examples = [
 ---
 
 <section id="examples" class="page-container py-12 sm:py-20">
-  <h2 class="text-accent text-2xl font-bold sm:text-3xl">
-    {m.examples_title()}
-  </h2>
+  <SectionHeading>{m.examples_title()}</SectionHeading>
   <p class="text-base-content/70 mt-2 max-w-2xl">
     {m.examples_description()}
   </p>

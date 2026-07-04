@@ -1,6 +1,7 @@
 <script lang="ts">
   import { m } from "@/paraglide/messages";
-  import CopyButton from "@/components/CopyButton.svelte";
+  import CopyableField from "@/components/CopyableField.svelte";
+  import SectionHeading from "@/components/SectionHeading.svelte";
 
   let repoUrl = $state("");
   let username = $state("");
@@ -167,9 +168,7 @@
 {/snippet}
 
 <section id="configurator" class="page-container py-12 sm:py-20">
-  <h2 class="text-accent text-2xl font-bold sm:text-3xl">
-    {m.configurator_title()}
-  </h2>
+  <SectionHeading>{m.configurator_title()}</SectionHeading>
   <p class="text-base-content/70 mt-2 max-w-2xl">
     {m.configurator_description()}
   </p>
@@ -393,37 +392,23 @@
               <legend class="fieldset-legend configurator-label">
                 {m.configurator_url_output_label()}
               </legend>
-              <div class="flex w-full items-stretch gap-2">
-                <input
-                  readonly
-                  class="input configurator-input w-full font-mono text-sm"
-                  value={badgeUrl}
-                  onclick={selectInputValue}
-                />
-                <CopyButton
-                  text={badgeUrl}
-                  label={m.common_copy_url()}
-                  copiedLabel={m.common_copied()}
-                />
-              </div>
+              <CopyableField
+                value={badgeUrl}
+                label={m.common_copy_url()}
+                copiedLabel={m.common_copied()}
+                onselect={selectInputValue}
+              />
             </fieldset>
             <fieldset class="fieldset">
               <legend class="fieldset-legend configurator-label">
                 {m.configurator_markdown_output_label()}
               </legend>
-              <div class="flex w-full items-stretch gap-2">
-                <input
-                  readonly
-                  class="input configurator-input w-full font-mono text-sm"
-                  value={markdownSnippet}
-                  onclick={selectInputValue}
-                />
-                <CopyButton
-                  text={markdownSnippet}
-                  label={m.common_copy_markdown()}
-                  copiedLabel={m.common_copied()}
-                />
-              </div>
+              <CopyableField
+                value={markdownSnippet}
+                label={m.common_copy_markdown()}
+                copiedLabel={m.common_copied()}
+                onselect={selectInputValue}
+              />
             </fieldset>
           </div>
         {/if}

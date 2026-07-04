@@ -1,14 +1,18 @@
 <script lang="ts">
+  import type { ClassValue } from "svelte/elements";
+
   let {
     text,
     label,
     copiedLabel,
-    variant = "icon",
+    variant = "inline",
+    class: className = "",
   }: {
     text: string;
     label: string;
     copiedLabel: string;
-    variant?: "icon" | "labeled";
+    variant?: "inline" | "labeled";
+    class?: ClassValue;
   } = $props();
 
   let copied = $state(false);
@@ -55,13 +59,13 @@
   </button>
 {:else}
   <div
-    class="tooltip flex self-stretch"
+    class={["tooltip", className]}
     class:tooltip-open={copied}
     data-tip={copied ? copiedLabel : label}
   >
     <button
       type="button"
-      class="btn btn-primary aspect-square h-auto min-w-12 shrink-0 self-stretch"
+      class="text-base-content/50 hover:text-accent rounded-sm p-0.5 transition-colors"
       aria-label={label}
       aria-live="polite"
       onclick={copyToClipboard}
