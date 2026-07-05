@@ -1,7 +1,6 @@
 <script lang="ts">
   import { m } from "@/paraglide/messages";
   import CopyableField from "@/components/CopyableField.svelte";
-  import SectionHeading from "@/components/SectionHeading.svelte";
 
   let repoUrl = $state("");
   let username = $state("");
@@ -167,23 +166,23 @@
   </legend>
 {/snippet}
 
-<section id="configurator" class="page-container py-12 sm:py-20">
-  <SectionHeading>{m.configurator_title()}</SectionHeading>
-  <p class="text-base-content/70 mt-2 max-w-2xl">
+<section id="configurator" class="page-container section-padding">
+  <h2>{m.configurator_title()}</h2>
+  <p class="text-base-content/70 mx-auto mt-2 max-w-2xl">
     {m.configurator_description()}
   </p>
 
-  <div class="card bg-base-200 mt-8 shadow-sm">
-    <div class="card-body gap-6">
+  <div class="card bg-base-200 mt-8 min-w-0 shadow-sm">
+    <div class="card-body min-w-0 gap-6">
       <fieldset class="fieldset">
         <legend class="fieldset-legend configurator-label"
           >{m.configurator_url_label()}</legend
         >
-        <div class="join w-full">
+        <div class="join w-full max-w-full">
           <input
             id="configurator-url"
             type="url"
-            class="input configurator-input join-item w-full"
+            class="input configurator-input join-item min-w-0 grow"
             placeholder={m.configurator_url_placeholder()}
             autocomplete="off"
             spellcheck="false"
@@ -192,7 +191,7 @@
           />
           <button
             type="button"
-            class="btn btn-primary join-item"
+            class="btn btn-primary join-item shrink-0"
             onclick={handleUseUrl}
           >
             {m.configurator_url_button()}
@@ -416,3 +415,26 @@
     </div>
   </div>
 </section>
+
+<style>
+  #configurator .configurator-input:focus,
+  #configurator .configurator-input:focus-within,
+  #configurator .configurator-input:focus-visible {
+    border-color: var(--color-accent);
+    outline: 2px solid color-mix(in oklch, var(--color-accent) 35%, transparent);
+    outline-offset: 0;
+  }
+
+  #configurator .configurator-tooltip {
+    --tt-bg: var(--color-base-300);
+  }
+
+  #configurator .configurator-tooltip[data-tip]::before {
+    max-width: 18rem;
+    white-space: normal;
+    text-align: left;
+    color: var(--color-base-content);
+    border: none;
+    box-shadow: none;
+  }
+</style>

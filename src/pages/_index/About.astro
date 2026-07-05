@@ -1,21 +1,15 @@
 ---
 import { m } from "@/paraglide/messages";
-import SectionHeading from "@/components/SectionHeading.svelte";
 ---
 
-<section id="about" class="page-container py-12 sm:py-20">
-  <SectionHeading>{m.about_title()}</SectionHeading>
-  <p
-    class="text-base-content/80 mx-auto mt-4 max-w-2xl leading-relaxed lg:mx-0"
-  >
+<section id="about" class="page-container section-padding">
+  <h2>{m.about_title()}</h2>
+  <p class="text-base-content/80 mx-auto mt-4 max-w-2xl leading-relaxed">
     {m.about_what_text()}
   </p>
 
-  <SectionHeading as="h3" class="mt-8">{m.about_problem_title()}</SectionHeading
-  >
-  <p
-    class="text-base-content/80 mx-auto mt-2 max-w-2xl leading-relaxed lg:mx-0"
-  >
+  <h3 class="mt-12">{m.about_problem_title()}</h3>
+  <p class="text-base-content/80 mx-auto mt-2 max-w-2xl leading-relaxed">
     {m.about_problem_text()}
   </p>
 </section>

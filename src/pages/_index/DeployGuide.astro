@@ -1,8 +1,6 @@
 ---
 import { m } from "@/paraglide/messages";
-import CardStepTitle from "@/components/CardStepTitle.svelte";
 import CopyableCode from "@/components/CopyableCode.svelte";
-import SectionHeading from "@/components/SectionHeading.svelte";
 
 const deployStep1Command = m.deploy_step1_command();
 const deploySecretCommand = m.deploy_step5_command();
@@ -10,14 +8,18 @@ const deployCommitCommand1 = m.deploy_step6_command_1();
 const deployCommitCommand2 = m.deploy_step6_command_2();
 ---
 
-<section id="deploy" class="page-container py-12 sm:py-20">
-  <SectionHeading>{m.deploy_title()}</SectionHeading>
-  <p class="text-base-content/70 mt-2 max-w-2xl">{m.deploy_description()}</p>
+<section id="deploy" class="page-container section-padding pb-8">
+  <h2>{m.deploy_title()}</h2>
+  <p class="text-base-content/70 mx-auto mt-2 max-w-2xl">
+    {m.deploy_description()}
+  </p>
 
   <ol class="mt-8 flex flex-col gap-4">
-    <li class="card bg-base-200 shadow-sm">
-      <div class="card-body">
-        <CardStepTitle align="left">{m.deploy_step1_label()}</CardStepTitle>
+    <li class="card bg-base-200 min-w-0 shadow-sm">
+      <div class="card-body min-w-0">
+        <h3 class="card-title text-accent text-left text-lg font-semibold">
+          {m.deploy_step1_label()}
+        </h3>
         <p class="text-base-content/70 text-sm">{m.deploy_step1_text()}</p>
         <CopyableCode
           client:visible
@@ -28,9 +30,11 @@ const deployCommitCommand2 = m.deploy_step6_command_2();
       </div>
     </li>
 
-    <li class="card bg-base-200 shadow-sm">
-      <div class="card-body">
-        <CardStepTitle align="left">{m.deploy_step2_label()}</CardStepTitle>
+    <li class="card bg-base-200 min-w-0 shadow-sm">
+      <div class="card-body min-w-0">
+        <h3 class="card-title text-accent text-left text-lg font-semibold">
+          {m.deploy_step2_label()}
+        </h3>
         <p class="text-base-content/70 text-sm">{m.deploy_step2_text()}</p>
         <a
           href="https://dash.cloudflare.com/"
@@ -43,24 +47,30 @@ const deployCommitCommand2 = m.deploy_step6_command_2();
       </div>
     </li>
 
-    <li class="card bg-base-200 shadow-sm">
-      <div class="card-body">
-        <CardStepTitle align="left">{m.deploy_step3_label()}</CardStepTitle>
+    <li class="card bg-base-200 min-w-0 shadow-sm">
+      <div class="card-body min-w-0">
+        <h3 class="card-title text-accent text-left text-lg font-semibold">
+          {m.deploy_step3_label()}
+        </h3>
         <p class="text-base-content/70 text-sm">{m.deploy_step3_text()}</p>
       </div>
     </li>
 
-    <li class="card bg-base-200 shadow-sm">
-      <div class="card-body">
-        <CardStepTitle align="left">{m.deploy_step4_label()}</CardStepTitle>
+    <li class="card bg-base-200 min-w-0 shadow-sm">
+      <div class="card-body min-w-0">
+        <h3 class="card-title text-accent text-left text-lg font-semibold">
+          {m.deploy_step4_label()}
+        </h3>
         <p class="text-base-content/70 text-sm">{m.deploy_step4_text_a()}</p>
         <p class="text-base-content/70 text-sm">{m.deploy_step4_text_b()}</p>
       </div>
     </li>
 
-    <li class="card bg-base-200 shadow-sm">
-      <div class="card-body">
-        <CardStepTitle align="left">{m.deploy_step5_label()}</CardStepTitle>
+    <li class="card bg-base-200 min-w-0 shadow-sm">
+      <div class="card-body min-w-0">
+        <h3 class="card-title text-accent text-left text-lg font-semibold">
+          {m.deploy_step5_label()}
+        </h3>
         <p class="text-base-content/70 text-sm">{m.deploy_step5_text()}</p>
         <a
           href="https://github.com/settings/tokens/new"
@@ -79,9 +89,11 @@ const deployCommitCommand2 = m.deploy_step6_command_2();
       </div>
     </li>
 
-    <li class="card bg-base-200 shadow-sm">
-      <div class="card-body">
-        <CardStepTitle align="left">{m.deploy_step6_label()}</CardStepTitle>
+    <li class="card bg-base-200 min-w-0 shadow-sm">
+      <div class="card-body min-w-0">
+        <h3 class="card-title text-accent text-left text-lg font-semibold">
+          {m.deploy_step6_label()}
+        </h3>
         <p class="text-base-content/70 text-sm">{m.deploy_step6_text()}</p>
         <CopyableCode
           client:visible

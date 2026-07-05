@@ -14,7 +14,7 @@
   } = $props();
 </script>
 
-<div class="relative">
+<div class="relative min-w-0">
   <input
     readonly
     class="input configurator-input w-full pr-10 font-mono text-sm"

@@ -57,6 +57,17 @@
   body {
     @apply font-sans;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-accent text-center text-2xl font-bold text-balance;
+  }
+  p {
+    @apply text-pretty;
+  }
 }
 
 @layer components {
@@ -67,25 +78,7 @@
   .configurator-label {
     @apply text-accent text-sm font-semibold tracking-wide uppercase sm:text-base;
   }
-
-  #configurator .configurator-input:focus,
-  #configurator .configurator-input:focus-within,
-  #configurator .configurator-input:focus-visible {
-    border-color: var(--color-accent);
-    outline: 2px solid color-mix(in oklch, var(--color-accent) 35%, transparent);
-    outline-offset: 0;
-  }
-
-  #configurator .configurator-tooltip {
-    --tt-bg: var(--color-base-300);
-  }
-
-  #configurator .configurator-tooltip[data-tip]::before {
-    max-width: 18rem;
-    white-space: normal;
-    text-align: left;
-    color: var(--color-base-content);
-    border: none;
-    box-shadow: none;
+  .section-padding {
+    @apply pt-28;
   }
 }

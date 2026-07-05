@@ -1,7 +1,5 @@
 ---
 import { m } from "@/paraglide/messages";
-import CardStepTitle from "@/components/CardStepTitle.svelte";
-import SectionHeading from "@/components/SectionHeading.svelte";
 
 const steps = [
   {
@@ -31,32 +29,32 @@ const steps = [
 ];
 ---
 
-<section id="how-it-works" class="page-container py-12 sm:py-20">
-  <SectionHeading>{m.how_it_works_title()}</SectionHeading>
-  <p class="text-base-content/70 mx-auto mt-2 max-w-2xl lg:mx-0">
+<section id="how-it-works" class="page-container section-padding">
+  <h2>{m.how_it_works_title()}</h2>
+  <p class="text-base-content/70 mx-auto mt-2 max-w-2xl">
     {m.how_it_works_description()}
   </p>
 
   <div
-    class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-stretch lg:gap-3"
+    class="mt-8 grid min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-stretch lg:gap-3"
     role="img"
     aria-label={m.how_it_works_description()}
   >
     {
       steps.map((step, index) => (
         <>
-          <div class="card bg-base-200 shadow-sm">
-            <div class="card-body items-center lg:items-start">
-              <span class="text-primary text-sm font-semibold tracking-wide uppercase">
+          <div class="card bg-base-200 min-w-0 shadow-sm">
+            <div class="card-body min-w-0 gap-3 p-6">
+              <span class="text-primary text-xs font-semibold tracking-widest uppercase">
                 {step.label}
               </span>
-              <CardStepTitle>{step.title}</CardStepTitle>
-              <span class="badge badge-accent badge-outline mx-auto h-auto w-fit max-w-full py-1.5 leading-snug whitespace-normal lg:mx-0">
+              <h3 class="card-title text-base-content text-left text-lg font-semibold">
+                {step.title}
+              </h3>
+              <span class="badge badge-accent badge-outline h-auto w-fit max-w-full py-1.5 leading-snug whitespace-normal">
                 {step.service}
               </span>
-              <p class="text-base-content/70 mt-2 w-full text-left text-sm">
-                {step.text}
-              </p>
+              <p class="text-base-content/70 text-sm">{step.text}</p>
             </div>
           </div>
           {index < steps.length - 1 && (
