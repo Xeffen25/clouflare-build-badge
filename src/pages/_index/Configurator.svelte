@@ -172,13 +172,13 @@
     {m.configurator_description()}
   </p>
 
-  <div class="card bg-base-200 mt-8 min-w-0 shadow-sm">
-    <div class="card-body min-w-0 gap-6">
+  <div class="card bg-base-200 mt-8 shadow-sm">
+    <div class="card-body gap-6">
       <fieldset class="fieldset">
         <legend class="fieldset-legend configurator-label"
           >{m.configurator_url_label()}</legend
         >
-        <div class="join w-full max-w-full">
+        <div class="join w-full">
           <input
             id="configurator-url"
             type="url"
@@ -386,7 +386,7 @@
         </div>
 
         {#if badgeUrl}
-          <div class="mt-4 flex flex-col gap-4">
+          <div class="mt-4 grid gap-4">
             <fieldset class="fieldset">
               <legend class="fieldset-legend configurator-label">
                 {m.configurator_url_output_label()}

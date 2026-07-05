@@ -13,7 +13,7 @@
 </script>
 
 <div
-  class="bg-base-300 relative min-w-0 rounded-field px-4 py-3 font-mono text-xs sm:text-sm"
+  class="bg-base-300 relative w-full min-w-0 overflow-hidden rounded-field px-4 py-3 font-mono text-xs sm:text-sm"
 >
   <code class="block pr-8 break-all whitespace-pre-wrap">{text}</code>
   <CopyButton class="absolute top-2 right-2" {text} {label} {copiedLabel} />
