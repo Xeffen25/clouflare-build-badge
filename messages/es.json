@@ -2,6 +2,7 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "index_title": "Cloudflare Build Badge - Insignias de Estado en Vivo para Pages y Workers",
   "index_description": "Genera insignias (badges) del estado de tus builds de Cloudflare Pages y Workers en tiempo real. Muestra el éxito de tus despliegues en READMEs de GitHub o webs.",
+  "seo_og_image_src": "/opengraph/es/opengraph.png",
   "seo_og_image_alt": "Cloudflare Build Badge — insignias de estado en vivo para Pages y Workers",
   "layout_skip_to_content": "Saltar al contenido principal",
 

@@ -2,6 +2,7 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "index_title": "Cloudflare Build Badge - Live Status Badges for Pages & Workers",
   "index_description": "Generate live build status badges for your Cloudflare Pages and Workers projects. Display your continuous deployment success seamlessly inside GitHub READMEs or websites.",
+  "seo_og_image_src": "/opengraph/en/opengraph.png",
   "seo_og_image_alt": "Cloudflare Build Badge — live build status badges for Pages and Workers",
   "layout_skip_to_content": "Skip to main content",
 

@@ -18,7 +18,7 @@ const site = Astro.site!;
 const locale = getLocale();
 const ogLocale = locale === "en" ? "en_US" : "es_ES";
 const ogLocaleAlternate = locale === "en" ? ["es_ES"] : ["en_US"];
-const ogImageUrl = new URL("/opengraph.png", site).href;
+const ogImageUrl = new URL(m.seo_og_image_src(), site).href;
 const basePath = deLocalizeHref(Astro.url.pathname);
 const languageAlternates = Object.fromEntries(
   locales.map((l) => [
