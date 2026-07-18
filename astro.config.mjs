@@ -58,6 +58,13 @@ export default defineConfig({
   ],
 
   vite: {
+    optimizeDeps: {
+      include: [
+        "@astrojs/svelte/server.js",
+        "astro/zod",
+        "astro/actions/runtime/entrypoints/server.js",
+      ],
+    },
     plugins: [
       paraglideVitePlugin({
         project: "./project.inlang",
